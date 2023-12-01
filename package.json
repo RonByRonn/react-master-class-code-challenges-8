@@ -11,7 +11,7 @@
     "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",
     "apexcharts": "^3.44.0",
-    "framer-motion": "^10.12.4",
+    "framer-motion": "^10.12.4",    
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-beautiful-dnd": "^13.1.1",
@@ -31,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm build"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +57,8 @@
     "@types/react-beautiful-dnd": "^13.1.7",
     "@types/react-helmet": "^6.1.9",
     "@types/react-router-dom": "^5.3.3",
-    "@types/styled-components": "^5.1.29"
-  }
+    "@types/styled-components": "^5.1.29",
+    "gh-pages": "^6.1.0"
+  },
+  "homepage": "https://ronbyronn.github.io/react-master-class"
 }

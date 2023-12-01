@@ -28,10 +28,11 @@ const Box = styled(motion.div)`
 `;
 
 const Button = styled(motion.button)`
+	position: absolute;
 	font-size: 20px;
 	padding: 8px 4px;
 	border-radius: 8px;
-	margin-top: 64px;
+	bottom: 320px;
 `;
 
 const Circle = styled(motion.div)`
@@ -53,9 +54,13 @@ const Overlay = styled(motion.div)`
 `;
 
 const boxVariants = {
-	hover: {
+	initial: (custom: number) => ({
+		originX: custom === 0 || custom === 2 ? 1 : 0,
+		originY: custom === 0 || custom === 1 ? 1 : 0,
+	}),
+	hover: (custom: number) => ({
 		scale: 1.1,
-	},
+	}),
 };
 
 const buttonVariants = {
@@ -80,16 +85,21 @@ function App() {
 					if (index === 1 || index === 2) {
 						return (
 							<Box
+								custom={index}
 								layoutId={index + ""}
 								key={index}
 								onClick={() => setId(index)}
 								variants={boxVariants}
+								initial="initial"
 								whileHover="hover"
-								style={
-									index === 1
-										? { originX: "0%", originY: "100%" }
-										: { originX: "100%", originY: "0%" }
-								}
+
+								// style={{ backgroundColor: "rgb(255, 255, 255" }}
+
+								// style={
+								// 	index === 1
+								// 		? { originX: "0%", originY: "100%" }
+								// 		: { originX: "100%", originY: "0%" }
+								// }
 							>
 								{(index === 1 ? !isBtnClicked : isBtnClicked) && (
 									<Circle layoutId="circle" />
@@ -99,15 +109,18 @@ function App() {
 					}
 					return (
 						<Box
+							custom={index}
 							layoutId={index + ""}
 							key={index}
 							onClick={() => setId(index)}
 							variants={boxVariants}
+							initial="initial"
 							whileHover="hover"
-							style={{
-								originX: index === 0 ? "100%" : "0%",
-								originY: index === 0 ? "100%" : "0%",
-							}}
+
+							// style={{
+							// 	originX: index === 0 ? "100%" : "0%",
+							// 	originY: index === 0 ? "100%" : "0%",
+							// }}
 						/>
 					);
 				})}
@@ -130,9 +143,7 @@ function App() {
 					>
 						<Box
 							layoutId={id + ""}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
+							style={{ backgroundColor: "rgb(255, 255, 255)", width: "250px" }}
 						/>
 					</Overlay>
 				) : null}
